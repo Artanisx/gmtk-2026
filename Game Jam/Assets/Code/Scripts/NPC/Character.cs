@@ -35,4 +35,26 @@ public class Character
     {
         Type = characterType;
     }
+    
+    // Handles movement for this character (state changes)
+    public void HandleMovement()
+    {
+        if (CanMove())
+        {
+            if (Type == CharacterType.NPCGUARD)
+                State = CharacterState.PATROL;      // NPC Guard will start patrolling
+            else if (Type == CharacterType.NPCSTAFF)
+                State = CharacterState.WORK;        // Staff can only work at their place 
+        }
+    }
+    
+    // Function will return wheter the character can move (the correct states that allow it)
+    public bool CanMove()
+    {
+        return State == CharacterState.IDLE || State == CharacterState.PATROL || State == CharacterState.WALK;
+    }
+    
+    // Function to handle input, this will either handle player movement with keyboard/mouse or make the npc move on their own
+    public virtual void HandleInput() {}
+    
 }
