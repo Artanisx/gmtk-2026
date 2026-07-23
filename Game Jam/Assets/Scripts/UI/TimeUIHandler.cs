@@ -24,6 +24,6 @@ public class TimeUIHandler : MonoBehaviour
         int second = (int)(timeSpent - 60 * minute);
         int millis = (int)((timeSpent - 60 * minute - second) * 1000);
 
-        textMesh.text = $"{minute}min {second}sec {millis}mil";
+        textMesh.text = $"{minute.ToString("000")}min {second.ToString("00")}sec {millis.ToString("000")}mil";
     }
 }
