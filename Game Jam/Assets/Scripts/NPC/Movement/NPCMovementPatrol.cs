@@ -12,6 +12,13 @@ public class NPCMovementPatrol : MonoBehaviour
    [SerializeField] private SerializedDictionary<int, Transform> _scheduledWaypoints;
    [SerializeField] private float _maxPatrollingTime;
    [SerializeField] private float _patrolRadius = 1f;
+
+   public SerializedDictionary<int, Transform> ScheduledWaypoints
+   {
+      get => _scheduledWaypoints;
+      private set => _scheduledWaypoints = value;
+   }
+
    private NavMeshAgent _agent;
    private bool _isPatrolling;
    private float _currentPatrollingTime;
