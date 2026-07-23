@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class NPCGuardController : MonoBehaviour
@@ -19,8 +21,8 @@ public class NPCGuardController : MonoBehaviour
 
     void Update()
     {
-        npcGuard.HandleInput();
         npcGuard.HandleMovement();
+        npcGuard.HandleBehaviour();
+        
     }
-    
 }

@@ -54,7 +54,7 @@ public class Character
         return State == CharacterState.IDLE || State == CharacterState.PATROL || State == CharacterState.WALK;
     }
     
-    // Function to handle input, this will either handle player movement with keyboard/mouse or make the npc move on their own
-    public virtual void HandleInput() {}
+    // Function to handle NPC/Player behaviour
+    public virtual void HandleBehaviour() {}
     
 }
