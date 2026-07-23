@@ -11,9 +11,6 @@ public class CasinoMachine : MonoBehaviour
         Working,
         Broken,
     }
-
-    // boolean to flag if it's hacked or not.
-    public bool isMachineHacked;
     
     // basic enum for states since there's only 2 and doesn't need to have more functionality like player, guards,etc
     [SerializeField] ECasinoMachineState myState;
@@ -38,10 +35,8 @@ public class CasinoMachine : MonoBehaviour
     //KASHING!
     public void GetBroken()
     {
-        isMachineHacked = true;
         SetMachineState(ECasinoMachineState.Broken);
 
-        Debug.Log("boolean value is : " + isMachineHacked);
         Debug.Log("My state is: " + myState);
     }
 
@@ -49,10 +44,8 @@ public class CasinoMachine : MonoBehaviour
     //ohhhh!
     public void GetFixed()
     {
-        isMachineHacked = false;
         SetMachineState(ECasinoMachineState.Working);
         
-        Debug.Log("boolean value is : " + isMachineHacked);
         Debug.Log("My state is: " + myState);
 
     }
@@ -82,8 +75,12 @@ public class CasinoMachine : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        isMachineHacked = false;
         SetMachineState(ECasinoMachineState.Working);
         Debug.Log("My state is: " + myState);
+    }
+
+    public ECasinoMachineState MyState
+    {
+        get {return myState;}
     }
 }
