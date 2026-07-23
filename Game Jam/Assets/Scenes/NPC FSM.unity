@@ -652,7 +652,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765770504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a65c3fe262488145a760b0c721f572f, type: 3}
+  m_Script: {fileID: 11500000, guid: f2ade0bcc6be11611ae4bb7dcc31b3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCGuardController
   player: {fileID: 0}
