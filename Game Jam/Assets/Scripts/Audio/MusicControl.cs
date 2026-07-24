@@ -18,4 +18,6 @@ public class MusicControl : MonoBehaviour
         _source.clip = _mainTheme;
         _source.Play();
     }
+    
+    //Make changes to source audio via EventManager
 }
