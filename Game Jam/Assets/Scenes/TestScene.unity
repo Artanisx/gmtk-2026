@@ -669,6 +669,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1632742855}
+    - target: {fileID: 398723466143521732, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2723656314157672725, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
       propertyPath: m_Name
       value: NPC Guard
@@ -676,7 +680,15 @@ PrefabInstance:
     - target: {fileID: 3583388725793793143, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1632742855}
+      objectReference: {fileID: 1655232034}
+    - target: {fileID: 3583388725793793143, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+      propertyPath: angleOfView
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583388725793793143, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+      propertyPath: detectionRange
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6972223976990048765, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.8205395
@@ -718,8 +730,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2762750713471682323, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
-    m_RemovedGameObjects: []
+    - {fileID: 3583388725793793143, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 2307854529158003305, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2723656314157672725, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
@@ -731,6 +744,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2723656314157672725, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1201704961}
+    - targetCorrespondingSourceObject: {fileID: 2723656314157672725, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1201704962}
   m_SourcePrefab: {fileID: 100100000, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
 --- !u!1 &1201704956 stripped
 GameObject:
@@ -804,6 +820,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1201704962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201704956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397f69bca0fee764fa7e0c96f8396154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConeOfView
+  player: {fileID: 1655232034}
+  detectionRange: 10
+  angleOfView: 60
 --- !u!224 &1216742938 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
@@ -831,7 +862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1521826275
 Transform:
   m_ObjectHideFlags: 0
