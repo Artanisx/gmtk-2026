@@ -43,7 +43,6 @@ public class NPCGuard : Character
     public void Patrol()
     {
         // Patrol code
-        Debug.Log(IsPlayerInRange && State == CharacterState.PATROL);
         // PATROL > CHASE - The player is seen
         if (IsPlayerInRange && State == CharacterState.PATROL)
             State = CharacterState.CHASE;      // NPC Guard will start chasing
@@ -63,6 +62,5 @@ public class NPCGuard : Character
         // CHECK > PATROL - The guard finishes the check and goes to the next check waypoint
         if (!IsNPCChecking && State == CharacterState.CHECK)
             State = CharacterState.PATROL;      // NPC Guard will start checking the machine
-        Debug.Log(State);
     }
 }

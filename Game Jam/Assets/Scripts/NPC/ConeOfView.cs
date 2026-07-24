@@ -51,9 +51,10 @@ public class ConeOfView : MonoBehaviour
             float angle = math.acos(Vector3.Dot(direction.normalized, transform.forward));
             angle = math.degrees(angle);
 
-            if(angle <= angleOfView/2 && Physics.Raycast(ray, out raycastHit))
+            // we don't check the angle in chase status
+            if((angle <= angleOfView/2 || controller.npcGuard.State == CharacterState.CHASE) && Physics.Raycast(ray, out raycastHit))
             {
-                if (raycastHit.collider.transform == player.transform)
+                if (raycastHit.collider.gameObject.GetEntityId()== player.GetEntityId())
                 {
                     // player can be seen and a chase should start
                     controller.npcGuard.IsPlayerInRange = true;

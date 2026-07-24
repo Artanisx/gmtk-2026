@@ -486,7 +486,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -794,7 +794,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -917,6 +917,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1655232034}
+    - target: {fileID: 7798212951217404084, guid: 4b569d4d434e2f495a46cfafb984e0f4, type: 3}
+      propertyPath: angleOfView
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5316024907454456985, guid: 4b569d4d434e2f495a46cfafb984e0f4, type: 3}
     m_RemovedGameObjects: []
@@ -1761,7 +1765,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
