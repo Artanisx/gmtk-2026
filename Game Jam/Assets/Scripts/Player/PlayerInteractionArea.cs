@@ -22,7 +22,7 @@ public class PlayerInteractionArea : MonoBehaviour
     public void Awake()
     {
         OnTargetSet += playerSabotage.SetTargetMachine;
-        SetTriggerInteractionArea(playerSabotage.accepteDistance);
+        // SetTriggerInteractionArea(playerSabotage.accepteDistance);
         Debug.Log("[Setup delegate for Targeting of machine]");
     }
 
