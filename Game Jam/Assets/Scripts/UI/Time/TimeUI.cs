@@ -7,5 +7,5 @@ public class TimeUI : MonoBehaviour
     
     private void Awake() => EventManager.TimeHasChanged.AddListener(UpdateTime);
 
-    private void UpdateTime(int currentHour) => _timerText.text = $"{currentHour}:00";
+    private void UpdateTime(int currentHour, int currentMinute) => _timerText.text = $"{currentHour}:{currentMinute.ToString("00")}";
 }

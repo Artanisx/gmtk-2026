@@ -6,10 +6,10 @@ using UnityEngine.Events;
 [System.Serializable]
 public static class EventManager
 {
-    public static UnityEvent<int> TimeHasChanged = new UnityEvent<int>();
+    public static UnityEvent<int, int> TimeHasChanged = new UnityEvent<int, int>();
     
-    public static void NotifyTimeChanged(int time)
+    public static void NotifyTimeChanged(int hour, int minute)
     {
-        TimeHasChanged?.Invoke(time);
+        TimeHasChanged?.Invoke(hour, minute);
     }
 }

@@ -24,8 +24,10 @@ public class TimeManager : MonoBehaviour
     
     [SerializeField] private float _minutesThreshold;
     private float _currentSeconds;
-   
+    
+    // minutesThreshold now descript the duration of an hour in second
     private int _currentHour = 8;
+
     public int CurrentHour
     {
         get => _currentHour;
@@ -38,8 +40,13 @@ public class TimeManager : MonoBehaviour
                 _currentHour = 0;
             }
             
-            EventManager.NotifyTimeChanged(_currentHour);
+            EventManager.NotifyTimeChanged(_currentHour, CurrentMinute);
         }
+    }
+
+    public int CurrentMinute
+    {
+        get {return (int)(_currentSeconds/_minutesThreshold * 60);}
     }
 
     private void Awake()
@@ -53,10 +60,12 @@ public class TimeManager : MonoBehaviour
     {
         _currentSeconds += Time.deltaTime;
 
-        if (_currentSeconds / 60 >= _minutesThreshold)
+        if (_currentSeconds >= _minutesThreshold)
         {
             _currentSeconds = 0;
             CurrentHour++;
         }
+
+        EventManager.NotifyTimeChanged(_currentHour, CurrentMinute);
     }
 }

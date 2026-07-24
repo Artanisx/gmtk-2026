@@ -1,50 +1,47 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class NPCMovementPatrol : MonoBehaviour
 {
-   [SerializedDictionary("Hour", "Waypoint")]
-   [SerializeField] private SerializedDictionary<int, Transform> _scheduledWaypoints;
    [SerializeField] private float _maxPatrollingTime;
+   [SerializeField] private float _patrolAroundInterval = 5f;
    [SerializeField] private float _patrolRadius = 1f;
 
-   public SerializedDictionary<int, Transform> ScheduledWaypoints
-   {
-      get => _scheduledWaypoints;
-      private set => _scheduledWaypoints = value;
-   }
-
    private NavMeshAgent _agent;
+   private NPCGuardController _guardController;
    private bool _isPatrolling;
    private float _currentPatrollingTime;
 
    private void Awake()
    {
       _agent = GetComponent<NavMeshAgent>();
+      _guardController = GetComponent<NPCGuardController>();
       EventManager.TimeHasChanged.AddListener(ScheduledPatrol);
    }
 
+   //Handles moving around a machine only if state is changed
    private void Update()
    {
-      CheckForPatrolAround();
+      if (_guardController.npcGuard.State == CharacterState.CHECK)
+      {
+         CheckForPatrolAround();
+      }
    }
    
-   public void ScheduledPatrol(int hour)
+   public void ScheduledPatrol(int hour, int minute)
    {
-      if (!_scheduledWaypoints.ContainsKey(hour))
+      if (!NPCScheduleManager.Instance.ScheduledWaypoints.ContainsKey(hour))
       {
          return;
       }
       
       StopPatrolling();
-      _agent.SetDestination(_scheduledWaypoints[hour].position);
+      _agent.SetDestination(NPCScheduleManager.Instance.ScheduledWaypoints[hour].position);
    }
 
+   //Logic before start actually moving guard around
    private void CheckForPatrolAround()
    {
       if (_isPatrolling)
@@ -53,13 +50,13 @@ public class NPCMovementPatrol : MonoBehaviour
          return;
       }
 
-      if (!_scheduledWaypoints.ContainsKey(TimeManager.Instance.CurrentHour))
+      if (!NPCScheduleManager.Instance.ScheduledWaypoints.ContainsKey(TimeManager.Instance.CurrentHour))
       {
          return;
       }
       
-      var npcPosition = new Vector3(transform.position.x, 0f, transform.position.z);
-      var targetPosition = new Vector3(_scheduledWaypoints[TimeManager.Instance.CurrentHour].position.x, 0f, _scheduledWaypoints[TimeManager.Instance.CurrentHour].position.z);
+      var npcPosition = transform.position;
+      var targetPosition = new Vector3(NPCScheduleManager.Instance.ScheduledWaypoints[TimeManager.Instance.CurrentHour].position.x, npcPosition.y, NPCScheduleManager.Instance.ScheduledWaypoints[TimeManager.Instance.CurrentHour].position.z);
       
       if (npcPosition != targetPosition)
       {
@@ -68,10 +65,11 @@ public class NPCMovementPatrol : MonoBehaviour
 
       _isPatrolling = true;
       
-      StartCoroutine(nameof(PatrolAroundWaypoint));
+      StartCoroutine(nameof(CheckMachine));
    }
    
-   public IEnumerator PatrolAroundWaypoint()
+   //Moves guard around
+   public IEnumerator CheckMachine()
    {
       if (_currentPatrollingTime >= _maxPatrollingTime)
       {
@@ -79,17 +77,20 @@ public class NPCMovementPatrol : MonoBehaviour
          yield break;
       }
       
-      var npcPosition = new Vector3(transform.position.x, 0f, transform.position.z);
+      var npcPosition = transform.position;
+      var targetPosition = NPCScheduleManager.Instance.ScheduledWaypoints[TimeManager.Instance.CurrentHour].position;
       var radius = new Vector3(Mathf.Sin(Random.Range(-360, 360f) * Mathf.Deg2Rad) * _patrolRadius, 0f, Mathf.Cos(Random.Range(-360, 360f) * Mathf.Deg2Rad) * _patrolRadius);
-      var radiusPosition = new Vector3(transform.position.x + radius.x, 0f, transform.position.z + radius.z);
+      var radiusPosition = new Vector3(targetPosition.x + radius.x, targetPosition.y, targetPosition.z + radius.z);
       
-      if (npcPosition != radiusPosition)
+      if (!_agent.SetDestination(radiusPosition))
       {
-         _agent.SetDestination(radiusPosition);
+         _currentPatrollingTime = 0;
+         StartCoroutine(nameof(CheckMachine));
+         yield break;
       }
 
-      yield return new WaitForSeconds(5f);
-      StartCoroutine(nameof(PatrolAroundWaypoint));
+      yield return new WaitForSeconds(_patrolAroundInterval);
+      StartCoroutine(nameof(CheckMachine));
    }
 
    private void StopPatrolling()
