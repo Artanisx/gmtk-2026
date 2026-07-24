@@ -13,8 +13,6 @@ public class LoseScreenUI : MonoBehaviour
         // get component
         animator = gameObject.GetComponent<Animator>();
         losingSound = gameObject.GetComponent<AudioSource>();
-
-        OnLoss();
     }
 
     public void OnLoss()
