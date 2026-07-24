@@ -3,7 +3,8 @@ using UnityEngine;
 public class CasinoMachine : MonoBehaviour
 {
     // Testing material
-    public Material stateMaterial;
+    public Material workingMat;
+    public Material brokenMat;
     
     //Enum of machine states
     public enum ECasinoMachineState
@@ -58,16 +59,14 @@ public class CasinoMachine : MonoBehaviour
         if (state == ECasinoMachineState.Working)
         {   
             myState = ECasinoMachineState.Working;
-            GetComponent<MeshRenderer>().material = stateMaterial;
-            stateMaterial.color = Color.blue;
+            GetComponent<MeshRenderer>().material = workingMat;
             // Does something here? 
             // Update UI, Art?
         }
         else
         {
             myState = ECasinoMachineState.Broken;
-            GetComponent<MeshRenderer>().material = stateMaterial;
-            stateMaterial.color = Color.darkRed;
+            GetComponent<MeshRenderer>().material = brokenMat;
             // Probably signal "Guard/AI" to come check it? 
         }
     }

@@ -3,14 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerSabotage : MonoBehaviour
 {
+    [SerializeField] private Camera playerCamera;
     [SerializeField] private InputActionReference inputSabotageRef;
-    [SerializeField] public float accepteDistance;
     [SerializeField] private CasinoMachine targetMachine;
+    
+    [SerializeField] private float sabotageMinimumDistance;
+    [SerializeField] private float rayCameraDistance;
+
     
     // On script being enabled fetch for the proper input action delegate and assigns it..
     public void OnEnable()
     {
-        inputSabotageRef.action.performed += OnSabotagingMachine;
+        inputSabotageRef.action.performed += OnInputCallSabotage;
         inputSabotageRef.action.Enable();
     }
     
@@ -19,13 +23,45 @@ public class PlayerSabotage : MonoBehaviour
     public void Awake()
     {
         targetMachine = null;   
+        playerCamera = Camera.main;
     }
 
     // On script being disabled removes for the existing input action delegate assigned to it..
     private void OnDisable()
     {
-        inputSabotageRef.action.performed -= OnSabotagingMachine;
+        inputSabotageRef.action.performed -= OnInputCallSabotage;
         inputSabotageRef.action.Disable();
+    }
+    
+    public void SendRaycastTowardsMachine()
+    {
+        Ray ray = playerCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * rayCameraDistance, Color.red);           
+        if (Physics.Raycast(ray, out hit, rayCameraDistance, LayerMask.GetMask("Machine")))
+        {
+            var distance = Vector3.Distance(transform.position, hit.transform.position);
+            if (distance <= sabotageMinimumDistance)
+            {
+                targetMachine = hit.transform.gameObject.GetComponent<CasinoMachine>();
+                TrySabotageMachine(targetMachine);
+            }
+        }
+    }
+
+    public void TestFunction()
+    {
+        // Vector3 adjustedHeightPoint = new Vector3(hit.point.x,transform.position.y,hit.point.x);
+        // Vector3 directionToTarget = adjustedHeightPoint - transform.position;
+        // Vector3 finalDirectionToTarget = directionToTarget.normalized * this.sabotageMinimumDistance;
+    }
+    
+    public void OnInputCallSabotage(InputAction.CallbackContext context)
+    {
+        //Clicked on button !
+        Debug.Log("Input is " + context.ReadValueAsButton());
+        SendRaycastTowardsMachine();
+        // TrySabotageMachine(targetMachine);
     }
     
     // Sets the targetMachine to be equal to the one that's passed as parameter
@@ -37,11 +73,7 @@ public class PlayerSabotage : MonoBehaviour
     
     //INPUT -> Pressing the Button ("F")
     //Input can be changed to be whatever button we want
-    public void OnSabotagingMachine(InputAction.CallbackContext context)
-    {
-        //Clicked on button !
-        TrySabotageMachine(targetMachine);
-    }
+
     
     //The coup-de-grace!
     // This is where it sets the machine if there's a machine value on the variable of type <CasinoMachine>
@@ -49,23 +81,10 @@ public class PlayerSabotage : MonoBehaviour
     // If it does, then it hacks the machine..
     private void TrySabotageMachine(CasinoMachine machine)
     {
-        Debug.Log("[Sabotage Starting..]");
         if (machine != null)
         {
-            Debug.Log("[Machine exists");
-            if (CalculateDistance(gameObject, machine.gameObject) <= accepteDistance)
-            {
-                Debug.Log("[It's within distance..]");
-                machine.GetSabotaged();
-            }
+            machine.GetSabotaged();
         }
     }
     
-    //Calculats the distance between 2 game objects
-    //Not sure we needed this method xD
-    private float CalculateDistance(GameObject player, GameObject machine)
-    {
-        var currentDistance = Vector3.Distance(player.transform.position, machine.transform.position);
-        return currentDistance;
-    }
 }
