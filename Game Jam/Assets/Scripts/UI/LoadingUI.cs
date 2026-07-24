@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class LoadingUI : MonoBehaviour
 {
     [SerializeField]
+    private bool makeInitialAnimation;
+    [SerializeField]
     private Animator animator;
     [SerializeField]
     private int sceneId;
@@ -13,7 +15,7 @@ public class LoadingUI : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
 
-        animator.Play("SlideOut");
+        if (makeInitialAnimation) animator.Play("SlideOut");
     }
 
     // Change scene
@@ -21,24 +23,19 @@ public class LoadingUI : MonoBehaviour
 
     private IEnumerator TriggerLoading(int sceneId)
     {
-        yield return new WaitForSeconds(1);
-
         animator.Play("SlideIn");
+
+        yield return new WaitForSeconds(1);
 
         // load scene in the background
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneId);
-        asyncLoad.allowSceneActivation = false;
-
-        yield return new WaitForSeconds(1);
 
         // while the scene load we update the progress bar
         while (!asyncLoad.isDone)
         {
             // check if it has finished
 
-            if (asyncLoad.progress >= 0.9f) asyncLoad.allowSceneActivation = true;
-
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
     }
 }
