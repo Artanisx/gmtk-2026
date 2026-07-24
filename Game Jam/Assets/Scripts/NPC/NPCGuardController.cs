@@ -33,7 +33,7 @@ public class NPCGuardController : MonoBehaviour
     }
     
     
-    private void ScheduledPatrol(int hour)
+    private void ScheduledPatrol(int hour, int minute)
     {
         npcGuard.State = CharacterState.PATROL;
     }

@@ -30,7 +30,7 @@ public class NPCMovementPatrol : MonoBehaviour
       }
    }
    
-   public void ScheduledPatrol(int hour)
+   public void ScheduledPatrol(int hour, int minute)
    {
       if (!NPCScheduleManager.Instance.ScheduledWaypoints.ContainsKey(hour))
       {
