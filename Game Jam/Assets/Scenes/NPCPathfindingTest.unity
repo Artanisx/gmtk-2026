@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 10637226}
   - component: {fileID: 10637228}
   - component: {fileID: 10637229}
+  - component: {fileID: 10637230}
   m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
@@ -212,14 +213,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a288e6aef52a46beda3c1d8dec0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCMovement
-  _scheduledWaypoints:
-    _serializedList:
-    - Key: 9
-      Value: {fileID: 81772725}
-    - Key: 10
-      Value: {fileID: 579467103}
   _maxPatrollingTime: 10
+  _patrolAroundInterval: 5
   _patrolRadius: 2.61
+--- !u!114 &10637230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10637225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ade0bcc6be11611ae4bb7dcc31b3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCGuardController
+  player: {fileID: 0}
 --- !u!1 &81772724
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +259,58 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1517257721}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &135300023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135300025}
+  - component: {fileID: 135300024}
+  m_Layer: 0
+  m_Name: NPCScheduleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &135300024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135300023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8654bb68e2af024a9d72d61416a3954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScheduleManager
+  _scheduledWaypoints:
+    _serializedList:
+    - Key: 9
+      Value: {fileID: 81772725}
+    - Key: 10
+      Value: {fileID: 620506030}
+    - Key: 11
+      Value: {fileID: 1138880761}
+--- !u!4 &135300025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135300023}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291590821
 GameObject:
@@ -740,7 +801,7 @@ Transform:
   m_GameObject: {fileID: 620506029}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.034, y: 2.77, z: -4.14}
+  m_LocalPosition: {x: -4.048, y: 2.77, z: -4.119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1026,7 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffde36348767d704ea911d8b0def04e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScheduleUI
-  _patrol: {fileID: 10637229}
   _scheduleText: {fileID: 698467756}
 --- !u!1 &963395414
 GameObject:
@@ -3387,6 +3447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517257721}
+  - component: {fileID: 1517257722}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -3413,6 +3474,18 @@ Transform:
   - {fileID: 620506030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1517257722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517257720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d9bcdf74a0c5d408c627bd96101b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathVisualizer
 --- !u!1 &1652817494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4133,3 +4206,4 @@ SceneRoots:
   - {fileID: 1325512078}
   - {fileID: 291590824}
   - {fileID: 770764727}
+  - {fileID: 135300025}
