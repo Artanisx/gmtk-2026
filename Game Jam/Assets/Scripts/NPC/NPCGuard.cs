@@ -1,7 +1,10 @@
+using System;
 using System.IO;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
+
+[Serializable]
 public class NPCGuard : Character
 {
     // This should be set by a Cone of View gameobject attached to the NPC Guard
@@ -22,23 +25,9 @@ public class NPCGuard : Character
     // This function will allow the NPC Guard to move in the next waypoint
     public override void HandleBehaviour()
     {
-        base.HandleBehaviour();
+        //base.HandleBehaviour();
         
-        if (State == CharacterState.PATROL)
-        {
-            // Move the NPC Guard towards the next waypoint
-            Patrol();
-        }
-        
-        if (State == CharacterState.CHECK)
-        {
-            IsNPCChecking = true;
-            
-            // Check machine logic (timer etc)
-            Check();
-        }
-
-        
+        Patrol();
     }
 
     private void Check()
@@ -54,7 +43,7 @@ public class NPCGuard : Character
     public void Patrol()
     {
         // Patrol code
-        
+        Debug.Log(IsPlayerInRange && State == CharacterState.PATROL);
         // PATROL > CHASE - The player is seen
         if (IsPlayerInRange && State == CharacterState.PATROL)
             State = CharacterState.CHASE;      // NPC Guard will start chasing
@@ -74,5 +63,6 @@ public class NPCGuard : Character
         // CHECK > PATROL - The guard finishes the check and goes to the next check waypoint
         if (!IsNPCChecking && State == CharacterState.CHECK)
             State = CharacterState.PATROL;      // NPC Guard will start checking the machine
+        Debug.Log(State);
     }
 }

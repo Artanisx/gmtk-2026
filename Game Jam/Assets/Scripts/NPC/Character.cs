@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // Basic Class for all Characters in the game (Player, NPCs)
@@ -22,7 +23,7 @@ public enum CharacterState
     WORK            // WORK STATE, USED FOR THE NPC STAFF TO MAN THE MACHINE (DEALING CARDS etc)
 }
  
-
+[Serializable]
 public class Character
 {
     public CharacterType Type;
