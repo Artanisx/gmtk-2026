@@ -8,8 +8,13 @@ public class ScheduleUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scheduleText;
     private string _text = "";
     
-    private void Awake()
+    private void Update()
     {
+        // solving loading issue
+        if (NPCScheduleManager.Instance == null) return;
+        
+        _text = "";
+
         foreach (var schedulePoint in NPCScheduleManager.Instance.ScheduledWaypoints.OrderBy(pair => pair.Key))
         {
             var text = $"At {schedulePoint.Key}:00 guard will be at {schedulePoint.Value.name}\n";
