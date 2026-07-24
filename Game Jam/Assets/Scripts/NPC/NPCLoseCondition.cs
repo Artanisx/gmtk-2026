@@ -31,7 +31,7 @@ public class NPCLoseCondition : MonoBehaviour
         {
             // check if object is a machine
             GameObject gameObject = collider.gameObject;
-
+            
             if (gameObject.tag != "Machine") continue;
 
             // we check if the machine is broken

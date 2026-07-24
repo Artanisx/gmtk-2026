@@ -13,10 +13,16 @@ public class LoseScreenUI : MonoBehaviour
         // get component
         animator = gameObject.GetComponent<Animator>();
         losingSound = gameObject.GetComponent<AudioSource>();
+
+        EventManager.PlayerLosed.AddListener(OnLoss);
+
+        // hide lose screen
+        gameObject.SetActive(false);
     }
 
     public void OnLoss()
     {
+        gameObject.SetActive(true);
         animator.Play("LoseFlash");
         losingSound.Play();
     }
