@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // move  player
-        controller.Move(new Vector3(playerDirection.x,-9,playerDirection.y) * Speed * Time.deltaTime);
+        controller.Move(new Vector3(playerDirection.x,-9,playerDirection.y) * (Speed * Time.deltaTime));
 
         // setup camera
         PlayerCamera.transform.position = transform.position + Vector3.up * CameraHeight;
