@@ -677,6 +677,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 3544024029121213218, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3583388725793793143, guid: 4b78e86494888964e9f57d863b1a0024, type: 3}
       propertyPath: player
       value: 
@@ -765,15 +769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902a288e6aef52a46beda3c1d8dec0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCMovementPatrol
-  _scheduledWaypoints:
-    _serializedList:
-    - Key: 0
-      Value: {fileID: 380325683}
-    - Key: 5
-      Value: {fileID: 1703128725}
-    - Key: 15
-      Value: {fileID: 764838247}
   _maxPatrollingTime: 10
+  _patrolAroundInterval: 5
   _patrolRadius: 1
 --- !u!195 &1201704958
 NavMeshAgent:
@@ -794,7 +791,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &1201704961
@@ -1563,7 +1560,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0

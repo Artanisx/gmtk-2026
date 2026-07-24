@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6972223976990048765}
   - component: {fileID: 398723466143521732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NPC Guard
   m_TagString: NPC Guard
   m_Icon: {fileID: 0}
