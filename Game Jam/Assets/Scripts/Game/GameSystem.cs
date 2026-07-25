@@ -14,10 +14,13 @@ public class GameSystem : MonoBehaviour
     private GameStatus status = GameStatus.PLAYING;
     private double startingTime;
     private double finalTimeSpent = 0;
+    private float _startMoney;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        EventManager.MachineStoleMoney.AddListener(DecreaseMoney);
+        _startMoney = CasinoMoney;
         // setting up starting time
         RestartGame();
     }
@@ -26,11 +29,11 @@ public class GameSystem : MonoBehaviour
     void Update()
     {
         // check for win condition
-        if (CasinoMoney <=  0 && status == GameStatus.PLAYING)
+        /*if (CasinoMoney <=  0 && status == GameStatus.PLAYING)
         {
             status = GameStatus.WON;
             finalTimeSpent = Time.realtimeSinceStartupAsDouble - startingTime;
-        }
+        }*/
     }
 
     // Always use this function to handle game status.
@@ -76,5 +79,15 @@ public class GameSystem : MonoBehaviour
     public GameStatus Status
     {
         get {return status;}
-    } 
+    }
+
+    private void DecreaseMoney(float amount)
+    {
+        CasinoMoney -= amount;
+        CasinoMoney = Mathf.Clamp(CasinoMoney, 0, _startMoney);
+        if (CasinoMoney <= 0 && status == GameStatus.PLAYING)
+        {
+            SetWinningStatue();
+        }
+    }
 }

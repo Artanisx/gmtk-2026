@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public static class EventManager
 {
     public static UnityEvent<int, int> TimeHasChanged = new UnityEvent<int, int>();
+    public static UnityEvent<float> MachineStoleMoney = new UnityEvent<float>();
     public static UnityEvent PlayerLosed = new UnityEvent();
     public static UnityEvent PlayerWin = new UnityEvent();
     
@@ -15,6 +16,11 @@ public static class EventManager
         TimeHasChanged?.Invoke(hour, minute);
     }
 
+    public static void NotifyStoleMoney(float amount)
+    {
+        MachineStoleMoney?.Invoke(amount);
+    }
+    
     public static void NotifyPlayerLosed()
     {
         PlayerLosed?.Invoke();
