@@ -29,15 +29,12 @@ public class NPCLoseCondition : MonoBehaviour
         
         foreach(Collider collider in colliders)
         {
-            // check if object is a machine
+            // check if object is a player
             GameObject gameObject = collider.gameObject;
+            
+            if (gameObject.tag != "Player") continue;
 
-            if (gameObject.tag != "Machine") continue;
-
-            // we check if the machine is broken
-            CasinoMachine casinoMachine = gameObject.GetComponent<CasinoMachine>();
-
-            if (casinoMachine.MyState == CasinoMachine.ECasinoMachineState.Broken) gameSystem.SetLosingStatue();
+            gameSystem.SetLosingStatue();
         }
     }
 }

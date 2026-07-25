@@ -28,6 +28,10 @@ public class NPCMovementPatrol : MonoBehaviour
       {
          CheckForPatrolAround();
       }
+      else if (_guardController.npcGuard.State == CharacterState.CHASE)
+      {
+         ChasePlayer();
+      }
    }
    
    public void ScheduledPatrol(int hour, int minute)
@@ -37,8 +41,13 @@ public class NPCMovementPatrol : MonoBehaviour
          return;
       }
       
-      StopPatrolling();
-      _agent.SetDestination(NPCScheduleManager.Instance.ScheduledWaypoints[hour].position);
+      // stop the guard from checking except in chase mode
+      if (_guardController.npcGuard.State != CharacterState.CHASE) 
+      {
+         StopPatrolling();
+         _agent.SetDestination(NPCScheduleManager.Instance.ScheduledWaypoints[hour].position);
+      }
+      
    }
 
    //Logic before start actually moving guard around
@@ -97,5 +106,11 @@ public class NPCMovementPatrol : MonoBehaviour
    {
       _currentPatrollingTime = 0;
       _isPatrolling = false;
+   }
+
+   // chasing functions
+   private void ChasePlayer()
+   {
+      _agent.SetDestination(_guardController.player.transform.position);
    }
 }

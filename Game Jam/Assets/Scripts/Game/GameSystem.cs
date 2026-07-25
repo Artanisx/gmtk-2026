@@ -41,6 +41,8 @@ public class GameSystem : MonoBehaviour
 
         status = GameStatus.LOSE;
         finalTimeSpent = Time.realtimeSinceStartupAsDouble - startingTime;
+
+        EventManager.NotifyPlayerLosed();
     }
 
     // Make Player win
@@ -50,6 +52,8 @@ public class GameSystem : MonoBehaviour
 
         status = GameStatus.WON;
         finalTimeSpent = Time.realtimeSinceStartupAsDouble - startingTime;
+
+        EventManager.NotifyPlayerWin();
     }
 
     // Use it to reset timer and put player on playing mode

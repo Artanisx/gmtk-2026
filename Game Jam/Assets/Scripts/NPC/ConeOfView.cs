@@ -1,4 +1,5 @@
 using Unity.Mathematics;
+using UnityEditor.MPE;
 using UnityEngine;
 
 public class ConeOfView : MonoBehaviour
@@ -12,9 +13,13 @@ public class ConeOfView : MonoBehaviour
     private float angleOfView;
     
     private bool isPlayerInRange = false;
+    private NPCGuardController controller;
     
     void Update ()
     {
+        // load component
+        controller = gameObject.GetComponent<NPCGuardController>();
+        
         // debug stuff
         Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(angleOfView/2, transform.up) * transform.forward * detectionRange);
         Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(-angleOfView/2, transform.up) * transform.forward * detectionRange);
@@ -46,17 +51,21 @@ public class ConeOfView : MonoBehaviour
             float angle = math.acos(Vector3.Dot(direction.normalized, transform.forward));
             angle = math.degrees(angle);
 
-            if(angle <= angleOfView/2 && Physics.Raycast(ray, out raycastHit))
+            // we don't check the angle in chase status
+            if((angle <= angleOfView/2 || controller.npcGuard.State == CharacterState.CHASE) && Physics.Raycast(ray, out raycastHit))
             {
-                if (raycastHit.collider.transform == player.transform)
+                if (raycastHit.collider.gameObject.GetEntityId()== player.GetEntityId())
                 {
                     // player can be seen and a chase should start
-                    Debug.Log("Player was seen!");
+                    controller.npcGuard.IsPlayerInRange = true;
+                    return;
                     
                     // If we pass the Game Manager (or the player) object we can call for a function to start the chase
                 }
             }
         }
+        
+        controller.npcGuard.IsPlayerInRange = false;
     }
 
     public float AngleOfView

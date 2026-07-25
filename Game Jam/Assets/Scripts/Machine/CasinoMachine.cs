@@ -11,6 +11,7 @@ public class CasinoMachine : MonoBehaviour
     {
         Working,
         Broken,
+        Shutdown
     }
     
     // basic enum for states since there's only 2 and doesn't need to have more functionality like player, guards,etc
@@ -26,7 +27,7 @@ public class CasinoMachine : MonoBehaviour
         {
             GetBroken();
         }
-        else
+        else if (myState == ECasinoMachineState.Broken)
         {
             GetFixed();   
         }

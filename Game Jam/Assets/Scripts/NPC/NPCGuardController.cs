@@ -6,14 +6,14 @@ using UnityEngine;
 public class NPCGuardController : MonoBehaviour
 {
     // Create a NPCGuard
-    public NPCGuard npcGuard { get; private set; }
+    public NPCGuard npcGuard;
 
     // This will hold a reference to the player transform (used for chase)
     public Transform player;
 
     private void Awake()
     {
-        EventManager.TimeHasChanged.AddListener(ScheduledPatrol);
+        //EventManager.TimeHasChanged.AddListener(ScheduledPatrol);
     }
 
     void Start()
@@ -22,12 +22,12 @@ public class NPCGuardController : MonoBehaviour
         npcGuard = new NPCGuard();
 
         // Set its start state to IDLE
-        npcGuard.State = CharacterState.IDLE;
+        npcGuard.State = CharacterState.PATROL;
     }
 
     void Update()
     {
-        npcGuard.HandleMovement();
+        //npcGuard.HandleMovement();
         npcGuard.HandleBehaviour();
         
     }
