@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e407407c477ee24a32067ed852a299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCLoseCondition
-  checkingRadius: 5
+  checkingRadius: 2
 --- !u!1 &91434776
 GameObject:
   m_ObjectHideFlags: 0

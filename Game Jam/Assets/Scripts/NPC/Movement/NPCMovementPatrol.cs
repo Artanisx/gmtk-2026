@@ -42,9 +42,12 @@ public class NPCMovementPatrol : MonoBehaviour
       }
       
       // stop the guard from checking except in chase mode
-      if (_guardController.npcGuard.State != CharacterState.CHASE) StopPatrolling();
-
-      _agent.SetDestination(NPCScheduleManager.Instance.ScheduledWaypoints[hour].position);
+      if (_guardController.npcGuard.State != CharacterState.CHASE) 
+      {
+         StopPatrolling();
+         _agent.SetDestination(NPCScheduleManager.Instance.ScheduledWaypoints[hour].position);
+      }
+      
    }
 
    //Logic before start actually moving guard around
