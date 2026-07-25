@@ -20,8 +20,8 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(new Vector3(playerDirection.x,-9,playerDirection.y) * (Speed * Time.deltaTime));
 
         // setup camera
-        PlayerCamera.transform.position = transform.position + Vector3.up * CameraHeight;
-        PlayerCamera.transform.rotation.SetLookRotation(Vector3.down,Vector3.forward);
+        // PlayerCamera.transform.position = transform.position + Vector3.up * CameraHeight;
+        // PlayerCamera.transform.rotation.SetLookRotation(Vector3.down,Vector3.forward);
     }
 
     public void OnMove(InputAction.CallbackContext context)
