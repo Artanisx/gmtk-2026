@@ -121,8 +121,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LoseScreenUI, Assembly-CSharp
+      - m_Target: {fileID: 4496517811948979960}
+        m_TargetAssemblyTypeName: WinScreenUI, Assembly-CSharp
         m_MethodName: OnMenu
         m_Mode: 1
         m_Arguments:

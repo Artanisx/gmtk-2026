@@ -1032,9 +1032,14 @@ MonoBehaviour:
     - Key: 0
       Value: {fileID: 380325683}
     - Key: 10
-      Value: {fileID: 0}
+      Value: {fileID: 816578590}
     - Key: 17
-      Value: {fileID: 0}
+      Value: {fileID: 1002150227}
+--- !u!4 &816578590 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8434698011765710064, guid: 337428b247d815347a0ed30372875f4e, type: 3}
+  m_PrefabInstance: {fileID: 521609396}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &834100941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1045,8 +1050,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 489078437565925111, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: sceneId
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 489078437565925111, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 834100943}
     - target: {fileID: 690624214746530075, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_Name
       value: MenuLoadingScreen
@@ -1151,6 +1160,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8844451adaffbedb49607f508c3f1f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!95 &834100943 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6443403157333401178, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
+  m_PrefabInstance: {fileID: 834100941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1002150227 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8434698011765710064, guid: 337428b247d815347a0ed30372875f4e, type: 3}
+  m_PrefabInstance: {fileID: 493607701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1216742938 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}

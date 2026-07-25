@@ -25,6 +25,7 @@ public class WinScreenUI : MonoBehaviour
     
     public void OnMenu()
     {
+        menuLoadingScreen.gameObject.SetActive(true);
         menuLoadingScreen.TriggerLoading();
     }
 }
