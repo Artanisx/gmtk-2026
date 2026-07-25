@@ -662,6 +662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 887836563082565609, guid: 337428b247d815347a0ed30372875f4e, type: 3}
+      propertyPath: _amountOfMoneyToSteal
+      value: 550
+      objectReference: {fileID: 0}
     - target: {fileID: 3453315466860224010, guid: 337428b247d815347a0ed30372875f4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5199995
@@ -723,6 +727,10 @@ PrefabInstance:
     - target: {fileID: 801332561923143781, guid: 337428b247d815347a0ed30372875f4e, type: 3}
       propertyPath: m_Name
       value: Machine (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 887836563082565609, guid: 337428b247d815347a0ed30372875f4e, type: 3}
+      propertyPath: _amountOfMoneyToSteal
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 3453315466860224010, guid: 337428b247d815347a0ed30372875f4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1570,6 +1578,7 @@ MonoBehaviour:
   targetMachine: {fileID: 0}
   sabotageMinimumDistance: 5
   rayCameraDistance: 20
+  hackingMinigamePrefab: {fileID: 472070246055963470, guid: faa3cc2b48f94654cbbdf87236e2fb5e, type: 3}
 --- !u!54 &1655232036
 Rigidbody:
   m_ObjectHideFlags: 0

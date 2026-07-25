@@ -431,6 +431,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1052679374}
+    - target: {fileID: 6612092627428006720, guid: faa3cc2b48f94654cbbdf87236e2fb5e, type: 3}
+      propertyPath: SuccessZoneRange.x
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612092627428006720, guid: faa3cc2b48f94654cbbdf87236e2fb5e, type: 3}
+      propertyPath: SuccessZoneRange.y
+      value: 0.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
