@@ -131,4 +131,9 @@ public class CasinoMachine : MonoBehaviour
         EventManager.NotifyStoleMoney(_amountOfMoneyToSteal);
         StartCoroutine(nameof(StealCash));
     }
+
+    public float GetAmountOfMoneyToSteal()
+    {
+        return _amountOfMoneyToSteal;
+    }
 }

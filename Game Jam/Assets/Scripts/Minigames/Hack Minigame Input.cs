@@ -289,6 +289,21 @@ public class HackMinigameInput : MonoBehaviour
         }
     }
 
+    public void SetDifficulty(float money)
+    {
+        // Set the difficulty of the minigame based on the amount of money at stake
+        
+        //TODO!
+        
+    }
+
+    // This destroys the minigame properly 
+    public void DestroyMinigame()
+    {
+        this.enabled = false;
+        Destroy(gameObject);
+    }
+
     public void PressStop() => OnStopPerformed(default);
     public void Retry() => StartHacking();
 }
