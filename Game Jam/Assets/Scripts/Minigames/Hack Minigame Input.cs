@@ -138,8 +138,8 @@ public class HackMinigameInput : MonoBehaviour
         if (!ValidateRefs())
             return;
 
-        if (Message)
-            Message.text = String.Empty;
+        //if (Message)
+        //    Message.text = String.Empty;
         
         // If the minigame is set to randomize the success zone, do so
         if (RandomizedStartZone)
