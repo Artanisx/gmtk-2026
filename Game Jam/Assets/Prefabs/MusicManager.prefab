@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicControl
   _mainTheme: {fileID: 8300000, guid: 4a72891ad0092d241b857cbe414ba36f, type: 3}
-  _alertedTheme: {fileID: 0}
+  _alertedTheme: {fileID: 8300000, guid: 6d7ba6df19eca934bae1ed4d2f448153, type: 3}
