@@ -9,7 +9,10 @@ public class PlayerSabotage : MonoBehaviour
     
     [SerializeField] private float sabotageMinimumDistance;
     [SerializeField] private float rayCameraDistance;
-
+    
+    [SerializeField] private GameObject hackingMinigamePrefab;
+    
+    private GameSystem gameSystem;
     
     // On script being enabled fetch for the proper input action delegate and assigns it..
     public void OnEnable()
@@ -24,6 +27,8 @@ public class PlayerSabotage : MonoBehaviour
     {
         targetMachine = null;   
         playerCamera = Camera.main;
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        
     }
 
     // On script being disabled removes for the existing input action delegate assigned to it..
@@ -81,9 +86,36 @@ public class PlayerSabotage : MonoBehaviour
     // If it does, then it hacks the machine..
     private void TrySabotageMachine(CasinoMachine machine)
     {
-        if (machine != null)
+        if (machine != null && gameSystem.IsMinigameSpawned == false)
         {
-            machine.GetSabotaged();
+            // Instantiate the Hacking Minigame
+            var miniGame = Instantiate(hackingMinigamePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            
+            // Disable it so we can set it up properly first
+            miniGame.SetActive(false);
+            
+            // Get a reference to its script
+            HackMinigameInput hackingMinigame = miniGame.GetComponent<HackMinigameInput>();
+            
+            // Set the minigame up to start immediately once we enable it
+            hackingMinigame.AutoStartOnEnable = true;
+            
+            // Set the minigame difficulty based on the amount of money available in the machine
+            hackingMinigame.SetDifficulty(machine.GetAmountOfMoneyToSteal());
+            
+            // Add to the OnSuccess event the steps to properly sabotage the machine and conclude the minigame
+            hackingMinigame.OnSuccess.AddListener(machine.GetSabotaged);
+            hackingMinigame.OnSuccess.AddListener(hackingMinigame.DestroyMinigame);
+            hackingMinigame.OnSuccess.AddListener(gameSystem.ResetMinigame);
+            
+            // Add to the OnFailure event to properly handle failure
+            hackingMinigame.OnFailure.AddListener(hackingMinigame.Retry);
+
+            // Enable the minigame
+            miniGame.SetActive(true);
+
+            // To avoid spawning multiple minigames
+            gameSystem.IsMinigameSpawned = true;
         }
     }
     

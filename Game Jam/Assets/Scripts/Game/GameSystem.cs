@@ -16,6 +16,7 @@ public class GameSystem : MonoBehaviour
     private double finalTimeSpent = 0;
     private float _startMoney;
 
+    public bool IsMinigameSpawned = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -89,5 +90,10 @@ public class GameSystem : MonoBehaviour
         {
             SetWinningStatue();
         }
+    }
+    
+    public void ResetMinigame()
+    {
+        IsMinigameSpawned = false;
     }
 }

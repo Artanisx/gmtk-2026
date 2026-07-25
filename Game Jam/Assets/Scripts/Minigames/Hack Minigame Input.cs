@@ -31,6 +31,29 @@ public class HackMinigameInput : MonoBehaviour
     [Tooltip("Should the minigame start automatically?")]
     public bool AutoStartOnEnable = true;
     
+    [Header("EASY DIFFICULTY SETTINGS")] 
+    [Tooltip("Easy Speed")]
+    public float EasySpeed = 1.5f;
+    [Tooltip("Easy Success Range")]
+    public Vector2 EasySuccessRange = new Vector2(0.3f, 0.4f);
+    [Tooltip("Easy Money Limit, the value of the machine should be less than or equal this for Easy Mode.")]
+    public int EasyMoney = 300;
+
+    [Header("MEDIUM DIFFICULTY SETTINGS")] 
+    [Tooltip("Medium Speed")]
+    public float MediumSpeed = 2.5f;
+    [Tooltip("Medium Success Range")]
+    public Vector2 MediumSuccessRange = new Vector2(0.2f, 0.3f);
+    [Tooltip("Medium Money Limit, the value of the machine should be less than or equal this for Medium Mode.")]
+    public int MediumMoney = 500;
+    
+    [Header("HARD DIFFICULTY SETTINGS")] 
+    [Tooltip("Hard Speed")]
+    public float HardSpeed = 3.5f;
+    [Tooltip("Hard Success Range")]
+    public Vector2 HardSuccessRange = new Vector2(0.1f, 0.2f);
+    
+    
     [Header("Input Settings")]
     [Tooltip("InputActionReference for the stop button action. The player uses this button to stop the Player Line")]
     public InputActionReference StopAction;
@@ -115,8 +138,8 @@ public class HackMinigameInput : MonoBehaviour
         if (!ValidateRefs())
             return;
 
-        if (Message)
-            Message.text = String.Empty;
+        //if (Message)
+        //    Message.text = String.Empty;
         
         // If the minigame is set to randomize the success zone, do so
         if (RandomizedStartZone)
@@ -287,6 +310,39 @@ public class HackMinigameInput : MonoBehaviour
         {
             return true;
         }
+    }
+
+    // Set the difficulty of the minigame based on the amount of money at stake
+    // More money, harder miningame
+    public void SetDifficulty(float money)
+    {
+        // Set the difficulty of the minigame based on the amount of money at stake
+
+        if (money <= EasyMoney)
+        {
+            // Easy difficulty
+            SuccessZoneRange = EasySuccessRange;
+            PlayerLineSpeed = EasySpeed;
+        }
+        else if (money > EasyMoney && money <= MediumMoney)
+        {
+            // Medium difficulty
+            SuccessZoneRange = MediumSuccessRange;
+            PlayerLineSpeed = MediumSpeed;
+        }
+        else
+        {
+            // Hard difficulty
+            SuccessZoneRange = HardSuccessRange;
+            PlayerLineSpeed = HardSpeed;
+        }
+    }
+
+    // This destroys the minigame properly 
+    public void DestroyMinigame()
+    {
+        this.enabled = false;
+        Destroy(gameObject);
     }
 
     public void PressStop() => OnStopPerformed(default);
