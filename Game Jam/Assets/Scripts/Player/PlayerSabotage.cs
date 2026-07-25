@@ -103,6 +103,9 @@ public class PlayerSabotage : MonoBehaviour
             // Add to the OnSuccess event the steps to properly sabotage the machine and conclude the minigame
             hackingMinigame.OnSuccess.AddListener(machine.GetSabotaged);
             hackingMinigame.OnSuccess.AddListener(hackingMinigame.DestroyMinigame);
+            
+            // Add to the OnFailure event to properly handle failure
+            hackingMinigame.OnFailure.AddListener(hackingMinigame.Retry);
 
             // Enable the minigame
             miniGame.SetActive(true);
