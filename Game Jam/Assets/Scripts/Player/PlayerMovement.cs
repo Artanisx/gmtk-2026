@@ -8,6 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float Speed = 5;
     private Vector2 playerDirection;
     private CharacterController controller;
+    
+    private GameSystem gameSystem;
+
+    void Awake()
+    {
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,8 +24,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // move  player
-        controller.Move(new Vector3(playerDirection.x,-9,playerDirection.y) * (Speed * Time.deltaTime));
+        // The playe can move around only if the hacking minigame is not running! 
+        if (gameSystem.IsMinigameSpawned == false)
+        {
+            // move  player
+            controller.Move(new Vector3(playerDirection.x,-9,playerDirection.y) * (Speed * Time.deltaTime));
+        }
 
         // setup camera
         PlayerCamera.transform.position = transform.position + Vector3.up * CameraHeight;
