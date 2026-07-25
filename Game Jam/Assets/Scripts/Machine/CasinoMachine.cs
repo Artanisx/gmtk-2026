@@ -1,7 +1,16 @@
+using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class CasinoMachine : MonoBehaviour
 {
+    [SerializeField] private GameSystem _gameSystem;
+    [SerializeField] private float _amountOfMoneyToSteal;
+    [SerializeField] private float _intervalToStealMoney;
+    [SerializeField] private TextMeshProUGUI _stealMoneyCountdown;
+
+    private float _currentTimeToSteal;
     // Testing material
     public Material workingMat;
     public Material brokenMat;
@@ -40,6 +49,8 @@ public class CasinoMachine : MonoBehaviour
         SetMachineState(ECasinoMachineState.Broken);
 
         Debug.Log("My state is: " + myState);
+
+        StartCoroutine(nameof(StealCash));
     }
 
     //Get Fixed will make it stop counting down from this pool of money
@@ -77,10 +88,47 @@ public class CasinoMachine : MonoBehaviour
     {
         SetMachineState(ECasinoMachineState.Working);
         Debug.Log("My state is: " + myState);
+        _currentTimeToSteal = _intervalToStealMoney;
+    }
+
+    private void Update()
+    {
+        StealCashVisual();
     }
 
     public ECasinoMachineState MyState
     {
         get {return myState;}
+    }
+
+    private void StealCashVisual()
+    {
+        if (MyState != ECasinoMachineState.Broken)
+        {
+            return;
+        }
+        
+        var timespan = TimeSpan.FromSeconds(_currentTimeToSteal);
+        _stealMoneyCountdown.text = timespan.ToString(@"mm\:ss");
+        _currentTimeToSteal -= Time.deltaTime;
+
+        if (_currentTimeToSteal > 0)
+        {
+            return;
+        }
+
+        _currentTimeToSteal = _intervalToStealMoney;
+    }
+    
+    private IEnumerator StealCash()
+    {
+        if (MyState != ECasinoMachineState.Broken)
+        {
+            yield break;
+        }
+        
+        yield return new WaitForSeconds(_intervalToStealMoney);
+        EventManager.NotifyStoleMoney(_amountOfMoneyToSteal);
+        StartCoroutine(nameof(StealCash));
     }
 }

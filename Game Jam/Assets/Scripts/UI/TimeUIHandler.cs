@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ public class TimeUIHandler : MonoBehaviour
     public GameObject GameSystemObject;
     private GameSystem gameSys;
     private TextMeshProUGUI textMesh;
+    private TimeSpan timeSpan;
+    private const string format = @"mm\:ss\:ff";
+    private bool IsTimerGoing = true;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,15 +19,19 @@ public class TimeUIHandler : MonoBehaviour
         gameSys = GameSystemObject.GetComponent<GameSystem>();
         textMesh = gameObject.GetComponent<TextMeshProUGUI>();
     }
+    
+    private void Update() => UpdateTime();
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateTime()
     {
-        double timeSpent = gameSys.TimeSpent;
-        int minute = (int)(timeSpent/60);
-        int second = (int)(timeSpent - 60 * minute);
-        int millis = (int)((timeSpent - 60 * minute - second) * 1000);
+        if(!IsTimerGoing) return;
+        
+        timeSpan = TimeSpan.FromSeconds(gameSys.TimeSpent);
+        ConvertTimeIntoText(textMesh, format);
+    }
 
-        textMesh.text = $"{minute.ToString("000")}min {second.ToString("00")}sec {millis.ToString("000")}mil";
+    private void ConvertTimeIntoText(TextMeshProUGUI textTMP, string format)
+    {
+        textTMP.text = timeSpan.ToString(format);
     }
 }

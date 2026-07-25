@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEditor.MPE;
 using UnityEngine;
@@ -14,12 +15,15 @@ public class ConeOfView : MonoBehaviour
     
     private bool isPlayerInRange = false;
     private NPCGuardController controller;
-    
-    void Update ()
+
+    private void Awake()
     {
         // load component
         controller = gameObject.GetComponent<NPCGuardController>();
-        
+    }
+
+    void Update ()
+    {
         // debug stuff
         Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(angleOfView/2, transform.up) * transform.forward * detectionRange);
         Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(-angleOfView/2, transform.up) * transform.forward * detectionRange);
