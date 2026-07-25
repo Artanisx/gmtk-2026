@@ -8,17 +8,20 @@ public class NPCMovementPatrol : MonoBehaviour
    [SerializeField] private float _maxPatrollingTime;
    [SerializeField] private float _patrolAroundInterval = 5f;
    [SerializeField] private float _patrolRadius = 1f;
+   [SerializeField] private float _chaseAngularSpeed = 360f;
 
    private NavMeshAgent _agent;
    private NPCGuardController _guardController;
    private bool _isPatrolling;
    private float _currentPatrollingTime;
+   private float _startingAngularSpeed;
 
    private void Awake()
    {
       _agent = GetComponent<NavMeshAgent>();
       _guardController = GetComponent<NPCGuardController>();
       EventManager.TimeHasChanged.AddListener(ScheduledPatrol);
+      _startingAngularSpeed = _agent.angularSpeed;
    }
 
    //Handles moving around a machine only if state is changed
@@ -31,6 +34,10 @@ public class NPCMovementPatrol : MonoBehaviour
       else if (_guardController.npcGuard.State == CharacterState.CHASE)
       {
          ChasePlayer();
+      }
+      else if (_guardController.npcGuard.State != CharacterState.CHASE)
+      {
+         _agent.angularSpeed = _startingAngularSpeed;
       }
    }
    
@@ -112,5 +119,6 @@ public class NPCMovementPatrol : MonoBehaviour
    private void ChasePlayer()
    {
       _agent.SetDestination(_guardController.player.transform.position);
+      _agent.angularSpeed = _chaseAngularSpeed;
    }
 }

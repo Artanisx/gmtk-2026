@@ -8,6 +8,7 @@ public static class EventManager
 {
     public static UnityEvent<int, int> TimeHasChanged = new UnityEvent<int, int>();
     public static UnityEvent<float> MachineStoleMoney = new UnityEvent<float>();
+    public static UnityEvent<bool> PlayerWasSeen = new UnityEvent<bool>();
     public static UnityEvent PlayerLosed = new UnityEvent();
     public static UnityEvent PlayerWin = new UnityEvent();
     
@@ -19,6 +20,11 @@ public static class EventManager
     public static void NotifyStoleMoney(float amount)
     {
         MachineStoleMoney?.Invoke(amount);
+    }
+
+    public static void NotifyPlayerWasSeen(bool wasSeen)
+    {
+        PlayerWasSeen?.Invoke(wasSeen);
     }
     
     public static void NotifyPlayerLosed()
