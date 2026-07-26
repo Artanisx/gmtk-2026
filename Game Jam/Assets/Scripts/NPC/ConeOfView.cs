@@ -1,6 +1,5 @@
 using System;
 using Unity.Mathematics;
-using UnityEditor.MPE;
 using UnityEngine;
 
 public class ConeOfView : MonoBehaviour
