@@ -7,10 +7,10 @@ Link to the [Itch.io Game Page](https://artanisx.itch.io/the-bankrupter).
 
 ## Credits:
 
-- Adrian
-- Artanis
-- Cruise4u
-- DruideMante
-- Kegantu
-- Salvador
-- Toya3062
+- Adrian - ART
+- Artanis - CODE
+- Cruise4u - CODE
+- DruideMante - CODE
+- Kegantu - CODE
+- Salvador - MUSIC and SFX
+- Toya3062 - ART
