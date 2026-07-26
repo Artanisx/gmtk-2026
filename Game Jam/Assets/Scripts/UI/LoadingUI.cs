@@ -8,8 +8,9 @@ public class LoadingUI : MonoBehaviour
     private bool makeInitialAnimation;
     [SerializeField]
     private Animator animator;
-    [SerializeField]
+    //[SerializeField]
     private int sceneId;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,5 +38,11 @@ public class LoadingUI : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+    }
+    
+    // Function to set the sceneId to load
+    public void SetSceneID(int sceneId)
+    {
+        this.sceneId = sceneId;
     }
 }
