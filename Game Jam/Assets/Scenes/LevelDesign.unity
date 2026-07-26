@@ -13540,13 +13540,17 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 834100943}
+    - target: {fileID: 577103836131084725, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1925.5073
+      objectReference: {fileID: 0}
     - target: {fileID: 690624214746530075, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_Name
       value: MenuLoadingScreen
       objectReference: {fileID: 0}
     - target: {fileID: 690624214746530075, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1195447309129638601, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_Pivot.x
@@ -18438,13 +18442,17 @@ PrefabInstance:
       propertyPath: makeInitialAnimation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 577103836131084725, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1920.8696
+      objectReference: {fileID: 0}
     - target: {fileID: 690624214746530075, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_Name
       value: LevelLoadingScreen
       objectReference: {fileID: 0}
     - target: {fileID: 690624214746530075, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 934247582903594567, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: m_UiScaleMode
