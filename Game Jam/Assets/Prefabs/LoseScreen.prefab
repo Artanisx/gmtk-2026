@@ -855,7 +855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You have been caugth.
+  m_text: You have been caught.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd5fd1a239e721e078089724a8b5b431, type: 2}
   m_sharedMaterial: {fileID: 2228192111712067411, guid: fd5fd1a239e721e078089724a8b5b431, type: 2}

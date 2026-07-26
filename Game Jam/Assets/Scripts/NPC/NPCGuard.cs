@@ -1,8 +1,6 @@
 using System;
 using System.IO;
-using UnityEditor.VersionControl;
 using UnityEngine;
-
 
 [Serializable]
 public class NPCGuard : Character
