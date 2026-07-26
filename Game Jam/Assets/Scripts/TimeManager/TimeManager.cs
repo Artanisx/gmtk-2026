@@ -58,9 +58,9 @@ public class TimeManager : MonoBehaviour
 
     private void UpdateTime()
     {
-        _currentSeconds += Time.deltaTime;
+        _currentSeconds += Time.deltaTime * 0.2f;
 
-        if (_currentSeconds >= _minutesThreshold)
+    if (_currentSeconds >= _minutesThreshold)
         {
             _currentSeconds = 0;
             CurrentHour++;
