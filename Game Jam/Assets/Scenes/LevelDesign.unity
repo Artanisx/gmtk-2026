@@ -1932,17 +1932,17 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 582874238}
+    - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3962998000608713531}
+    - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1894465845}
     - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1748563809}
-    - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 582874238}
-    - targetCorrespondingSourceObject: {fileID: 1935146608706758819, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3962998000608713531}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e822aa8538ada3959db433b584ec65f, type: 3}
 --- !u!1001 &224847725

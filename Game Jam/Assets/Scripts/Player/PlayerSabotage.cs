@@ -86,7 +86,8 @@ public class PlayerSabotage : MonoBehaviour
     // If it does, then it hacks the machine..
     private void TrySabotageMachine(CasinoMachine machine)
     {
-        if (machine != null && gameSystem.IsMinigameSpawned == false)
+        // THere should be amachine being selected, the minigame should not be already invoked and the status should be playing (not won or lose)
+        if (machine != null && gameSystem.IsMinigameSpawned == false && gameSystem.Status == GameStatus.PLAYING)
         {
             // Instantiate the Hacking Minigame
             var miniGame = Instantiate(hackingMinigamePrefab, new Vector3(0, 0, 0), Quaternion.identity);
