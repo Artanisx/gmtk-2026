@@ -300,6 +300,7 @@ MonoBehaviour:
   _maxPatrollingTime: 10
   _patrolAroundInterval: 5
   _patrolRadius: 2.61
+  _chaseAngularSpeed: 720
 --- !u!114 &3429965068788092396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,6 +313,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ade0bcc6be11611ae4bb7dcc31b3ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCGuardController
+  npcGuard:
+    Type: 2
+    State: 0
+    WalkSpeed: 0
+    RunSpeed: 0
+    IsPlayerInRange: 0
+    IsPlayerCaught: 0
+    MachineReached: 0
+    IsNPCChecking: 0
   player: {fileID: 0}
 --- !u!114 &7798212951217404084
 MonoBehaviour:
@@ -328,3 +338,4 @@ MonoBehaviour:
   player: {fileID: 0}
   detectionRange: 10
   angleOfView: 90
+  _npcRememberTime: 5

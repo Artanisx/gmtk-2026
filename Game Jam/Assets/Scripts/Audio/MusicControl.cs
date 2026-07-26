@@ -17,7 +17,25 @@ public class MusicControl : MonoBehaviour
         
         _source.clip = _mainTheme;
         _source.Play();
+        EventManager.PlayerWasSeen.AddListener(ChangeMusic);
     }
     
     //Make changes to source audio via EventManager
+    private void ChangeMusic(bool wasSeen)
+    {
+        if (wasSeen && _source.clip != _alertedTheme)
+        {
+            _source.clip = _alertedTheme;
+            _source.Play();
+            return;
+        }
+
+        if (_source.clip == _mainTheme)
+        {
+            return;
+        }
+        
+        _source.clip = _mainTheme;
+        _source.Play();
+    }
 }

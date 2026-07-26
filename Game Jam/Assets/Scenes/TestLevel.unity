@@ -1049,10 +1049,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 489078437565925111, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
-      propertyPath: sceneId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 489078437565925111, guid: d8d2e4e0a0bf0b4368b56de77e10f413, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 834100943}
