@@ -2206,10 +2206,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click with the Left Mouse Button to interact with the minigame.
+  m_text: 'Click with the <sprite name="ui_buttons_atlas_LMB"> to interact with the
+    minigame.
 
-    You
-    can also use Spacebar to interact with the minigame.
+    You can also use <sprite name="ui_buttons_atlas_SPACE"> to interact
+    with the minigame.
 
 '
   m_isRightToLeft: 0
@@ -2230,7 +2231,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2fd5abba35089d345a609df5ee936a9b, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -2485,11 +2486,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Use the W-A-S-D keys to move your character around the map.
+  m_text: 'Use the <sprite name="ui_buttons_atlas_W">-<sprite name="ui_buttons_atlas_A">-<sprite
+    name="ui_buttons_atlas_S">-<sprite name="ui_buttons_atlas_D"> keys to move your
+    character around the map.
 
 
-    Click
-    with the Left Mouse Button on a Gambling Machine to start Hacking it.'
+    Click with the <sprite name="ui_buttons_atlas_LMB">
+    on a Gambling Machine to start Hacking it.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2508,7 +2511,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2fd5abba35089d345a609df5ee936a9b, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
