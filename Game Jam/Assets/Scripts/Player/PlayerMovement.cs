@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float CameraHeight = 10;
     public float Speed = 5;
     private Vector2 playerDirection;
+    private Vector3 _offset;
     private CharacterController controller;
     
     private GameSystem gameSystem;
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        _offset = PlayerCamera.transform.position;
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // setup camera
-        // PlayerCamera.transform.position = transform.position + Vector3.up * CameraHeight;
-        // PlayerCamera.transform.rotation.SetLookRotation(Vector3.down,Vector3.forward);
+        PlayerCamera.transform.position = _offset + transform.position + Vector3.up * CameraHeight;
+        PlayerCamera.transform.rotation.SetLookRotation(Vector3.down,Vector3.forward);
     }
 
     public void OnMove(InputAction.CallbackContext context)
