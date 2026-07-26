@@ -89,6 +89,8 @@ public class CasinoMachine : MonoBehaviour
         SetMachineState(ECasinoMachineState.Working);
         Debug.Log("My state is: " + myState);
         _currentTimeToSteal = _intervalToStealMoney;
+        EventManager.PlayerWin.AddListener(DisableOnWinLose);
+        EventManager.PlayerLosed.AddListener(DisableOnWinLose);
     }
 
     private void Update()
@@ -135,5 +137,10 @@ public class CasinoMachine : MonoBehaviour
     public float GetAmountOfMoneyToSteal()
     {
         return _amountOfMoneyToSteal;
+    }
+
+    private void DisableOnWinLose()
+    {
+        enabled = false;
     }
 }
