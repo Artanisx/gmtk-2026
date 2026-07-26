@@ -19522,7 +19522,7 @@ MonoBehaviour:
   targetMachine: {fileID: 0}
   sabotageMinimumDistance: 5
   rayCameraDistance: 20
-  hackingMinigamePrefab: {fileID: 0}
+  hackingMinigamePrefab: {fileID: 472070246055963470, guid: faa3cc2b48f94654cbbdf87236e2fb5e, type: 3}
 --- !u!54 &1655232036
 Rigidbody:
   m_ObjectHideFlags: 0
