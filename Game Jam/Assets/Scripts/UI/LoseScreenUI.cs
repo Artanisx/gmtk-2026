@@ -45,11 +45,13 @@ public class LoseScreenUI : MonoBehaviour
 
     public void OnRetry()
     {
+        levelLoadingScreen.SetSceneID(2);
         levelLoadingScreen.TriggerLoading();
     }
 
     public void OnMenu()
     {
+        menuLoadingScreen.SetSceneID(0);
         menuLoadingScreen.TriggerLoading();
     }
 }
