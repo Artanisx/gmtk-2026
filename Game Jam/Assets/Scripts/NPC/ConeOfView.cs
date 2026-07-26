@@ -61,6 +61,7 @@ public class ConeOfView : MonoBehaviour
                 {
                     // player can be seen and a chase should start
                     controller.npcGuard.IsPlayerInRange = true;
+                    EventManager.NotifyPlayerWasSeen(true);
                     return;
                     
                     // If we pass the Game Manager (or the player) object we can call for a function to start the chase

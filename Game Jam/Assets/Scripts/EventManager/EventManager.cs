@@ -22,7 +22,7 @@ public static class EventManager
         MachineStoleMoney?.Invoke(amount);
     }
 
-    public static void NotifyPlayerWasSeen(bool wasSeen)
+    public static void NotifyPlayerWasSeen(bool wasSeen)  
     {
         PlayerWasSeen?.Invoke(wasSeen);
     }
