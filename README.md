@@ -1,7 +1,7 @@
 # THE BANKRUPTER
 This is our repository for Game Jam [GMTK 2026](https://itch.io/jam/gmtk-jam-2026).
 
-![Screenshot 1](https://img.itch.zone/aW1hZ2UvNDgxODc2Ni8yODgwNjk4Mi5wbmc=/original/Q3wP%2B2.png)
+![Screenshot 1](https://img.itch.zone/aW1hZ2UvNDgxODc2Ni8yODg2MzU0Mi5wbmc=/original/jusHeA.png)
 
 ![Screenshot 2](https://img.itch.zone/aW1hZ2UvNDgxODc2Ni8yODgwNzExOC5qcGc=/original/PmPihU.jpg)
 
