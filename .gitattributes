@@ -131,6 +131,12 @@
 *.mdb lfs-file
 *.pdb lfs-file
 *.so lfs-file
+*.dylib lfs-file
+
+# FMOD
+*.bank lfs-file
+**/Plugins/FMOD/**/*.bundle text eol=lf
+**/Plugins/FMOD/**/Info.plist text eol=lf
 
 # Packaging
 *.zip lfs-file
