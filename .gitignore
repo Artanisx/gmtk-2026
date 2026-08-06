@@ -116,3 +116,14 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /Game Jam/[Aa]ssets/[Ss]ceneDependencyCache*
+
+# FMOD for Unity
+# Never ignore DLLs in the FMOD subfolder.
+!/Game Jam/[Aa]ssets/Plugins/FMOD/**/lib/*
+# Don't ignore images and gizmos used by FMOD in the Unity Editor.
+!/Game Jam/[Aa]ssets/Gizmos/FMOD/*
+!/Game Jam/[Aa]ssets/Editor Default Resources/FMOD/*
+# Ignore the Cache folder since it is updated locally.
+/Game Jam/[Aa]ssets/Plugins/FMOD/Cache/*
+# Bank files ARE committed (team has no FMOD Studio access, needs built banks to hear audio).
+fmod_editor.log
