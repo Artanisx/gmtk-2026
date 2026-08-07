@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5385411009328730825}
   - component: {fileID: 1245983647167326662}
-  - component: {fileID: 2403928518049686712}
+  - component: {fileID: 8870742665020150109}
   m_Layer: 0
   m_Name: MusicManager
   m_TagString: Untagged
@@ -130,7 +130,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2403928518049686712
+--- !u!114 &8870742665020150109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +139,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8586194593753215185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b924ccc1675c4fa4c81626466ff0e480, type: 3}
+  m_Script: {fileID: 11500000, guid: 44abac0f2141e467b80e69816cc67cf0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MusicControl
-  _mainTheme: {fileID: 8300000, guid: 4a72891ad0092d241b857cbe414ba36f, type: 3}
-  _alertedTheme: {fileID: 8300000, guid: 6d7ba6df19eca934bae1ed4d2f448153, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  musicEvent:
+    Guid:
+      Data1: 658240196
+      Data2: 1321729303
+      Data3: 612916886
+      Data4: 1923878291
+    Path: event:/Music/BankrupterMusic

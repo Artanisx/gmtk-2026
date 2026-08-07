@@ -47,6 +47,7 @@ public class GameSystem : MonoBehaviour
         finalTimeSpent = Time.realtimeSinceStartupAsDouble - startingTime;
 
         EventManager.NotifyPlayerLosed();
+        AudioManager.MusicInstance.setParameterByNameWithLabel("State", "Lose");
     }
 
     // Make Player win
@@ -58,6 +59,7 @@ public class GameSystem : MonoBehaviour
         finalTimeSpent = Time.realtimeSinceStartupAsDouble - startingTime;
 
         EventManager.NotifyPlayerWin();
+        AudioManager.MusicInstance.setParameterByNameWithLabel("State", "Win");
     }
 
     // Use it to reset timer and put player on playing mode
@@ -95,5 +97,6 @@ public class GameSystem : MonoBehaviour
     public void ResetMinigame()
     {
         IsMinigameSpawned = false;
+        AudioManager.MusicInstance.setParameterByNameWithLabel("Hacking", "False");
     }
 }

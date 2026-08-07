@@ -117,6 +117,7 @@ public class PlayerSabotage : MonoBehaviour
 
             // To avoid spawning multiple minigames
             gameSystem.IsMinigameSpawned = true;
+            AudioManager.MusicInstance.setParameterByNameWithLabel("Hacking", "True");
         }
     }
     

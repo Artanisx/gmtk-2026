@@ -34,6 +34,7 @@ public class NPCLoseCondition : MonoBehaviour
             
             if (gameObject.tag != "Player") continue;
 
+            AudioManager.MusicInstance.setParameterByNameWithLabel("Alert", "True");
             gameSystem.SetLosingStatue();
         }
     }
